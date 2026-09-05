@@ -1,1 +1,6 @@
-dir -Force
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+Get-Content .gitignore
