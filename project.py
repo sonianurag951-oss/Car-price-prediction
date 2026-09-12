@@ -178,3 +178,6 @@ folder = r"D:\python\DATA_SCIENCE\MACHINE_LEARNING\SuperVisedLearning\carpricepr
 # joblib.dump(X.columns.tolist(),"columns.pkl")
 
 print("All files saved successfully!")
+
+
+# https://car-price-prediction-kntkyb7cyxjqsgnrkebbos.streamlit.app/

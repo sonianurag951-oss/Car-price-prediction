@@ -402,24 +402,16 @@ if predict_button:
         # Convert price into lakh
         price_lakh = predicted_price / 100000
 
-        st.markdown(
-            f"""
-            <div class="prediction-box">
+        price_lakh = prediction / 100000
 
-                <div style="font-size:20px;">
-                    Estimated Car Price
-                </div>
+        price_lakh = float(prediction[0]) / 100000
 
-                <div class="prediction-price">
-                    ₹{price_lakh:.2f} Lakh
-                </div>
-
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        
-
+        st.markdown(f"""
+     <div class="prediction-box">
+     <div style="font-size:20px;">Estimated Car Price</div>
+     <div class="prediction-price">₹{price_lakh:.2f} Lakh</div>
+     </div>
+    """, unsafe_allow_html=True)
 
         st.subheader("📋 Car Details Used for Prediction")
 

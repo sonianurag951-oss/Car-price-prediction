@@ -1,14 +1,5 @@
-
-Car-Price-Prediction/
-│
-├── data/
-│   └── cars.csv
-│
-├── models/
-│   ├── car_price_model.pkl
-│   ├── columns.pkl
-│   ├── scaler.pkl
-├── app.py
-├── train.py
-├── requirements.txt
-└── README.md
+streamlit
+pandas
+numpy
+scikit-learn
+joblib
