@@ -411,7 +411,8 @@ if predict_button:
      <div style="font-size:20px;">Estimated Car Price</div>
      <div class="prediction-price">₹{price_lakh:.2f} Lakh</div>
      </div>
-    """, unsafe_allow_html=True)
+     """, 
+     unsafe_allow_html=True)
 
         st.subheader("📋 Car Details Used for Prediction")
 

@@ -103,7 +103,7 @@ model_GD.fit(X_train,y_train)
 y_pred_GD=model_GD.predict(X_test)
 
 
-# Random forest model
+# Random forest model Regression
 model_RF=RandomForestRegressor(n_estimators=200,random_state=42)
 model_RF.fit(X_train,y_train)
 y_pred_RF=model_RF.predict(X_test)
