@@ -1,36 +1,3 @@
-Car Price Prediction
-        ↓
-Data Cleaning
-        ↓
-EDA
-        ↓
-Feature Engineering
-        ↓
-Categorical Encoding
-        ↓
-Train/Test Split
-        ↓
-        ├── Linear Regression
-        ├── Decision Tree
-        ├── Random Forest
-        ├── Gradient Boosting
-        └── SVR
-                ↓
-       Model Comparison
-                ↓
-       Hyperparameter Tuning
-                ↓
-        Best Model Selection
-                ↓
-          Save Model
-                ↓
-       Streamlit Web App
-                ↓
-        GitHub Portfolio
-
-
-
-
 
 Car-Price-Prediction/
 │
@@ -41,11 +8,9 @@ Car-Price-Prediction/
 │   └── EDA.ipynb
 │
 ├── models/
-│   ├── linear_regression.pkl
-│   ├── decision_tree.pkl
-│   ├── random_forest.pkl
-│   ├── gradient_boosting.pkl
-│   └── scaler.pkl
+│   ├── car_price_model.pkl
+│   ├── columns.pkl
+│   ├── scaler.pkl
 │
 ├── app.py
 ├── train.py

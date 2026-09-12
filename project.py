@@ -173,8 +173,8 @@ print(results)
 # Save final model
 folder = r"D:\python\DATA_SCIENCE\MACHINE_LEARNING\SuperVisedLearning\carpriceproject"
 
-joblib.dump(model_lr, "car_price_model.pkl")
-joblib.dump(scalar,"scaler.pkl")
-joblib.dump(X.columns.tolist(),"columns.pkl")
+# joblib.dump(model_lr, "car_price_model.pkl")
+# joblib.dump(scalar,"scaler.pkl")
+# joblib.dump(X.columns.tolist(),"columns.pkl")
 
 print("All files saved successfully!")
