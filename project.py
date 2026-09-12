@@ -13,7 +13,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.ensemble import RandomForestRegressor
 import joblib
 data = pd.read_csv(
-    r"D:\python\DATA_SCIENCE\MACHINE_LEARNING\SuperVisedLearning\carpriceproject\data\car.csv"
+    r"carpriceproject/data/car.csv"
 )
 df=pd.DataFrame(data)
 print(df)
@@ -36,26 +36,26 @@ print(df.groupby(['brand','transmission'])['price'].sum())
 print(df.groupby(['brand','fuelType'])['price'].sum())
 print(df[['mileage', 'mpg']].corr())
 # graph
-# categorial=['brand','fuelType','transmission']
-# for col in categorial:
-#  plt.figure(figsize=(8,4))
-#  sns.histplot(data=df,x=df[col])
-#  plt.show()
+categorial=['brand','fuelType','transmission']
+for col in categorial:
+ plt.figure(figsize=(8,4))
+ sns.histplot(data=df,x=df[col])
+ plt.show()
 
-# sns.scatterplot(data=df, x='year', y='price')
-# plt.show()
+sns.scatterplot(data=df, x='year', y='price')
+plt.show()
 
-# sns.scatterplot(data=df, x='mileage', y='price')
-# plt.show()
+sns.scatterplot(data=df, x='mileage', y='price')
+plt.show()
 
-# sns.boxplot(data=df, x='fuelType', y='price')
-# plt.show()
+sns.boxplot(data=df, x='fuelType', y='price')
+plt.show()
 
-# sns.boxplot(data=df, x='transmission', y='price')
-# plt.show()
+sns.boxplot(data=df, x='transmission', y='price')
+plt.show()
 
-# sns.heatmap(df.corr(numeric_only=True),annot=True)
-# plt.show()
+sns.heatmap(df.corr(numeric_only=True),annot=True)
+plt.show()
 
 # create x and y
 df_encode=pd.get_dummies(df,drop_first=True)
@@ -173,8 +173,8 @@ print(results)
 # Save final model
 folder = r"D:\python\DATA_SCIENCE\MACHINE_LEARNING\SuperVisedLearning\carpriceproject"
 
-joblib.dump(model_lr, folder + r"\car_price_model.pkl")
-joblib.dump(scalar, folder + r"\scaler.pkl")
-joblib.dump(X.columns.tolist(), folder + r"\columns.pkl")
+joblib.dump(model_lr, "car_price_model.pkl")
+joblib.dump(scalar,"scaler.pkl")
+joblib.dump(X.columns.tolist(),"columns.pkl")
 
 print("All files saved successfully!")

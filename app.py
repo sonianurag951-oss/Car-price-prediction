@@ -5,22 +5,12 @@ import numpy as np
 import joblib
 from pathlib import Path
 
-
-# ============================================================
-# PAGE CONFIGURATION
-# ============================================================
-
 st.set_page_config(
     page_title="Car Price Predictor",
     page_icon="🚗",
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
-
-# ============================================================
-# CUSTOM CSS
-# ============================================================
 
 st.markdown(
     """
@@ -63,13 +53,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-# ============================================================
-# PROJECT PATHS
-# ============================================================
-
 BASE_DIR = Path(__file__).resolve().parent
-
 
 
 MODEL_PATH = BASE_DIR / "models" / "car_price_model.pkl"
@@ -77,36 +61,19 @@ COLUMNS_PATH = BASE_DIR / "models" / "columns.pkl"
 DATA_PATH = BASE_DIR / "data" / "car.csv"
 
 
-# ============================================================
-# LOAD MODEL
-# ============================================================
-
 @st.cache_resource
 def load_model():
     return joblib.load(MODEL_PATH)
-
-
-# ============================================================
-# LOAD TRAINING COLUMNS
-# ============================================================
 
 @st.cache_resource
 def load_columns():
     return joblib.load(COLUMNS_PATH)
 
 
-# ============================================================
-# LOAD CAR DATA
-# ============================================================
-
 @st.cache_data
 def load_car_data():
     return pd.read_csv(DATA_PATH)
 
-
-# ============================================================
-# HEADER
-# ============================================================
 
 st.markdown(
     '<div class="main-title">🚗 Car Price Prediction</div>',
@@ -120,10 +87,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-# ============================================================
-# ERROR HANDLING - FILES
-# ============================================================
 
 try:
 
@@ -155,11 +118,6 @@ except Exception as e:
     st.exception(e)
     st.stop()
 
-
-# ============================================================
-# VALIDATE DATASET
-# ============================================================
-
 required_columns = [
     "brand",
     "model",
@@ -189,10 +147,6 @@ if missing_columns:
     st.stop()
 
 
-# ============================================================
-# SIDEBAR
-# ============================================================
-
 with st.sidebar:
 
     st.header("🚗 Car Details")
@@ -210,18 +164,10 @@ with st.sidebar:
     )
 
 
-# ============================================================
-# INPUT SECTION
-# ============================================================
-
 st.subheader("Enter Car Information")
 
 col1, col2 = st.columns(2)
 
-
-# ------------------------------------------------------------
-# BRAND
-# ------------------------------------------------------------
 
 with col1:
 
@@ -237,11 +183,6 @@ with col1:
         "🏷️ Brand",
         brands
     )
-
-
-# ------------------------------------------------------------
-# MODEL
-# ------------------------------------------------------------
 
 with col2:
 
@@ -273,12 +214,6 @@ with col2:
         "🚘 Model",
         models
     )
-
-
-# ============================================================
-# YEAR AND TRANSMISSION
-# ============================================================
-
 col3, col4 = st.columns(2)
 
 
@@ -312,9 +247,7 @@ with col4:
     )
 
 
-# ============================================================
-# MILEAGE AND FUEL TYPE
-# ============================================================
+
 
 col5, col6 = st.columns(2)
 
@@ -357,10 +290,6 @@ with col6:
     )
 
 
-# ============================================================
-# TAX AND MPG
-# ============================================================
-
 col7, col8 = st.columns(2)
 
 
@@ -400,9 +329,6 @@ with col8:
     )
 
 
-# ============================================================
-# ENGINE SIZE
-# ============================================================
 
 engine_max = float(df["engineSize"].max())
 
@@ -420,10 +346,6 @@ engine_size = st.number_input(
 )
 
 
-# ============================================================
-# PREDICTION BUTTON
-# ============================================================
-
 st.divider()
 
 predict_button = st.button(
@@ -432,18 +354,9 @@ predict_button = st.button(
     use_container_width=True
 )
 
-
-# ============================================================
-# PREDICTION
-# ============================================================
-
 if predict_button:
 
     try:
-
-        # ----------------------------------------------------
-        # CREATE INPUT DATAFRAME
-        # ----------------------------------------------------
 
         input_data = pd.DataFrame({
             "brand": [brand],
@@ -458,9 +371,7 @@ if predict_button:
         })
 
 
-        # ----------------------------------------------------
-        # RECREATE ONE-HOT ENCODING
-        # ----------------------------------------------------
+
 
         input_encoded = pd.get_dummies(
             input_data,
@@ -468,9 +379,7 @@ if predict_button:
         )
 
 
-        # ----------------------------------------------------
-        # ALIGN COLUMNS WITH TRAINING DATA
-        # ----------------------------------------------------
+
 
         input_encoded = input_encoded.reindex(
             columns=expected_columns,
@@ -478,28 +387,15 @@ if predict_button:
         )
 
 
-        # ----------------------------------------------------
-        # ENSURE NUMERIC DATA
-        # ----------------------------------------------------
-
         input_encoded = input_encoded.apply(
             pd.to_numeric,
             errors="coerce"
         ).fillna(0)
 
-
-        # ----------------------------------------------------
-        # PREDICTION
-        # ----------------------------------------------------
-
         prediction = model.predict(input_encoded)
 
         predicted_price = float(prediction[0])
 
-
-        # ----------------------------------------------------
-        # DISPLAY RESULT
-        # ----------------------------------------------------
 
         st.success("✅ Prediction completed successfully!")
 
@@ -524,10 +420,6 @@ if predict_button:
         )
         
 
-
-        # ----------------------------------------------------
-        # DISPLAY INPUT SUMMARY
-        # ----------------------------------------------------
 
         st.subheader("📋 Car Details Used for Prediction")
 
@@ -557,10 +449,6 @@ if predict_button:
 
         st.exception(e)
 
-
-# # ============================================================
-# # MODEL INFORMATION
-# # ============================================================
 
 # st.divider()
 
@@ -594,9 +482,6 @@ if predict_button:
 #     """
 # )
 
-# ============================================================
-# FOOTER
-# ============================================================
 
 st.caption(
     "🚗 Car Price Prediction | Machine Learning Project"
