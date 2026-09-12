@@ -4,14 +4,10 @@ Car-Price-Prediction/
 ├── data/
 │   └── cars.csv
 │
-├── notebooks/
-│   └── EDA.ipynb
-│
 ├── models/
 │   ├── car_price_model.pkl
 │   ├── columns.pkl
 │   ├── scaler.pkl
-│
 ├── app.py
 ├── train.py
 ├── requirements.txt
